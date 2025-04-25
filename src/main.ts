@@ -5,7 +5,7 @@
  */
 
 // tailwind
-import './assets/tailwind.css'
+import './styles/tailwind.css'
 
 // Plugins
 import { registerPlugins } from '@/plugins'

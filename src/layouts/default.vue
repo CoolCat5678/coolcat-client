@@ -6,6 +6,9 @@
   <AppFooter />
 </template>
 
-<script lang="ts" setup>
+<script
+  lang="ts"
+  setup
+>
   //
 </script>

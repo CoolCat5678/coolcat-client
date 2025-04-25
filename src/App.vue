@@ -8,5 +8,5 @@
   lang="ts"
   setup
 >
-//
+  //
 </script>
