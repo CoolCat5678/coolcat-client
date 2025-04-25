@@ -4,6 +4,9 @@
  * Bootstraps Vuetify and other plugins then mounts the App`
  */
 
+// tailwind
+import './assets/tailwind.css'
+
 // Plugins
 import { registerPlugins } from '@/plugins'
 

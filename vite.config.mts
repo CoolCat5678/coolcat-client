@@ -12,6 +12,9 @@ import Vuetify, { transformAssetUrls } from 'vite-plugin-vuetify'
 import { defineConfig } from 'vite'
 import { fileURLToPath, URL } from 'node:url'
 
+// tailwindcss
+import tailwindcss from '@tailwindcss/vite'
+
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
@@ -54,6 +57,7 @@ export default defineConfig({
         }],
       },
     }),
+    tailwindcss(),
   ],
   optimizeDeps: {
     exclude: [
@@ -80,7 +84,8 @@ export default defineConfig({
     ],
   },
   server: {
-    port: 3000,
+    port: process.env.PORT ? parseInt(process.env.PORT, 10) : 4173,
+    host: '0.0.0.0',
   },
   css: {
     preprocessorOptions: {
