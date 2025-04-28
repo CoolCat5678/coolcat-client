@@ -1,82 +1,91 @@
 <template>
   <v-container>
+    <h2 class="text-h5 font-weight-bold mb-4">👤 使用者測試頁</h2>
 
-    <h2 class="text-2xl font-bold mb-4">👤 使用者測試頁</h2>
-    <v-card>
-      <v-card-title>
-        新增使用者
-      </v-card-title>
-
-      <div class="mb-6">
-
+    <!-- 新增使用者表單 -->
+    <v-card class="mb-6">
+      <v-card-title>新增使用者</v-card-title>
+      <v-card-text>
         <v-form @submit.prevent="handleCreateUser">
-          <div class="space-y-4">
-            <v-text-field
-              v-model="newUser.username"
-              class="w-full p-2 border border-gray-300 rounded-md"
-              placeholder="使用者名稱"
-              type="text"
-            />
-            <v-text-field
-              v-model="newUser.email"
-              class="w-full p-2 border border-gray-300 rounded-md"
-              placeholder="使用者 Email"
-              type="email"
-            />
-            <v-text-field
-              v-model="newUser.role"
-              class="w-full p-2 border border-gray-300 rounded-md"
-              placeholder="使用者角色（選填）"
-              type="text"
-            />
-            <v-btn
-              class="w-full p-2 bg-blue-500 text-white rounded-md hover:bg-blue-600"
-              type="submit"
-            >
-              創建使用者
-            </v-btn>
-          </div>
+          <v-row dense>
+            <v-col cols="12">
+              <v-text-field
+                v-model="newUser.username"
+                label="使用者名稱"
+                type="text"
+              />
+            </v-col>
+            <v-col cols="12">
+              <v-text-field
+                v-model="newUser.email"
+                label="使用者 Email"
+                type="email"
+              />
+            </v-col>
+            <v-col cols="12">
+              <v-text-field
+                v-model="newUser.role"
+                label="使用者角色（選填）"
+                type="text"
+              />
+            </v-col>
+            <v-col cols="12">
+              <v-btn
+                type="submit"
+                color="primary"
+                block
+              >
+                創建使用者
+              </v-btn>
+            </v-col>
+          </v-row>
         </v-form>
-      </div>
+      </v-card-text>
     </v-card>
-    <!-- 顯示使用者列表 -->
-    <div class="mb-6">
-      <h3 class="text-xl mb-2">使用者列表</h3>
-      <button
-        class="mb-4 p-2 bg-green-500 text-white rounded-md hover:bg-green-600"
-        @click="loadUsers"
+
+    <!-- 使用者列表 -->
+    <h3 class="text-h6 mb-2">使用者列表</h3>
+    <v-btn
+      class="mb-4"
+      color="success"
+      @click="loadUsers"
+    >
+      加載使用者列表
+    </v-btn>
+
+    <v-row dense>
+      <v-col
+        v-for="user in users"
+        :key="user.id"
+        cols="12"
+        sm="6"
+        md="4"
       >
-        加載使用者列表
-      </button>
-      <ul>
-        <li
-          v-for="user in users"
-          :key="user.id"
-          class="flex justify-between items-center mb-4 p-4 border border-gray-300 rounded-md"
-        >
-          <div>
-            <p class="font-semibold">{{ user.username }}</p>
-            <p class="text-sm text-gray-500">{{ user.email }}</p>
-          </div>
-          <div>
-            <button
-              class="px-3 py-1 text-white bg-yellow-500 rounded-md hover:bg-yellow-600"
+        <v-card>
+          <v-card-title class="text-h6">
+            {{ user.username }}
+          </v-card-title>
+          <v-card-subtitle>{{ user.email }}</v-card-subtitle>
+          <v-card-actions>
+            <v-btn
+              color="warning"
               @click="handleUpdateUser(user.id)"
             >
               更新
-            </button>
-            <button
-              class="px-3 py-1 text-white bg-red-500 rounded-md hover:bg-red-600 ml-2"
+            </v-btn>
+            <v-btn
+              color="error"
               @click="handleDeleteUser(user.id)"
             >
               刪除
-            </button>
-          </div>
-        </li>
-      </ul>
-    </div>
+            </v-btn>
+          </v-card-actions>
+        </v-card>
+      </v-col>
+    </v-row>
   </v-container>
 </template>
+
 
 <script lang='ts'>
   import { defineComponent, ref } from 'vue';

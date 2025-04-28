@@ -10,10 +10,11 @@
         <div class="mb-8 text-center">
           <div class="text-h5 font-weight-bold">CoolCat</div>
         </div>
-        <toggle-theme-btn />
       </v-col>
 
       <v-col
+        v-for="n in 20"
+        :key="n"
         cols="12"
         md="6"
       >
@@ -23,11 +24,12 @@
           prepend-icon="mdi-account"
           rounded="lg"
           subtitle="Navigate to the user list page."
-          title="Go to Users"
-          to="/users"
+          :title="'Go to User'"
+          :to="'/users'"
           variant="tonal"
         />
       </v-col>
+
     </v-row>
   </v-container>
 </template>
