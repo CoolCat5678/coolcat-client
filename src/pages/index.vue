@@ -46,6 +46,7 @@
             color="secondary"
             router
             :to="'/home'"
+            variant="outlined"
           >
             Get Started
           </v-btn>
