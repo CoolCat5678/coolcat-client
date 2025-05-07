@@ -3,8 +3,16 @@
     class="h-full"
     fluid
   >
-    <OiiaCatThree />
-
+    <intro-canvas />
+    <grid-background />
+    <v-row>
+      <v-col
+        class="d-flex justify-center align-center"
+        cols="12"
+      >
+        <h1 class="text-h1">Welcome to the Home Page</h1>
+      </v-col>
+    </v-row>
   </v-container>
 </template>
 
@@ -12,7 +20,6 @@
   lang="ts"
   setup
 >
-  import OiiaCatThree from './components/OiiaCatThree.vue';
 
 </script>
 
