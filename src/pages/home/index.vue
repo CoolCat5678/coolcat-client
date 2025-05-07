@@ -3,8 +3,9 @@
     class="h-full"
     fluid
   >
-    <OiiaCatThree />
+    <grid-background />
 
+    <!-- <OiiaCatThree /> -->
   </v-container>
 </template>
 
@@ -12,7 +13,6 @@
   lang="ts"
   setup
 >
-  import OiiaCatThree from './components/OiiaCatThree.vue';
 
 </script>
 
