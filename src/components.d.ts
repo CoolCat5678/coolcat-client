@@ -10,6 +10,10 @@ declare module 'vue' {
   export interface GlobalComponents {
     AppFooter: typeof import('./components/AppFooter.vue')['default']
     AppHeader: typeof import('./components/AppHeader.vue')['default']
+    AuraButton: typeof import('./components/element/AuraButton.vue')['default']
+    BackgroundCanvas: typeof import('./components/BackgroundCanvas.vue')['default']
+    ElectricBackground: typeof import('./components/background/ElectricBackground.vue')['default']
+    MyBtn: typeof import('./components/MyBtn.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     ToggleThemeBtn: typeof import('./components/ToggleThemeBtn.vue')['default']

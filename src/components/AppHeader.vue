@@ -1,7 +1,7 @@
 <template>
   <v-app-bar
     app
-    class="backdrop-blur-md bg-white/90 dark:bg-neutral-900/90"
+    class="opacity-90 backdrop-blur-md"
     height="50"
     scroll-behavior="elevate"
     scroll-threshold="0"
