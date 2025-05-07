@@ -15,9 +15,12 @@ declare module 'vue' {
     copy: typeof import('./components/background/ElectricBackground copy.vue')['default']
     ElectricBackground: typeof import('./components/background/ElectricBackground.vue')['default']
     GridBackground: typeof import('./components/background/gridBackground.vue')['default']
+    Intro: typeof import('./components/background/Intro.vue')['default']
+    IntroCanvas: typeof import('./components/background/IntroCanvas.vue')['default']
     MyBtn: typeof import('./components/MyBtn.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     ToggleThemeBtn: typeof import('./components/ToggleThemeBtn.vue')['default']
+    X: typeof import('./components/background/x.vue')['default']
   }
 }
