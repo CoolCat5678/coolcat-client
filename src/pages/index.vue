@@ -4,7 +4,7 @@
     fluid
   >
     <!-- 背景 canvas 元件 -->
-    <BackgroundCanvas />
+    <ElectricBackground />
 
     <v-row
       align="center"
@@ -43,7 +43,7 @@
           <v-btn
             class="btn-fade"
             :class="{ visible: showButton }"
-            color="secondary"
+            color="primary"
             router
             :to="'/home'"
             variant="outlined"
@@ -67,12 +67,10 @@
 
 <script lang="ts">
   import { defineComponent, onMounted, ref } from 'vue'
-  import BackgroundCanvas from './components/BackgroundCanvas.vue'
 
   export default defineComponent({
     name: 'WelcomePage',
     components: {
-      BackgroundCanvas,
     },
     setup () {
       const showLogo = ref(false)
