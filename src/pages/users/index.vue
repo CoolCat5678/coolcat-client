@@ -31,9 +31,9 @@
             </v-col>
             <v-col cols="12">
               <v-btn
-                type="submit"
-                color="primary"
                 block
+                color="primary"
+                type="submit"
               >
                 創建使用者
               </v-btn>
@@ -58,8 +58,8 @@
         v-for="user in users"
         :key="user.id"
         cols="12"
-        sm="6"
         md="4"
+        sm="6"
       >
         <v-card>
           <v-card-title class="text-h6">
