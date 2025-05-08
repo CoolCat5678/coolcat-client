@@ -1,5 +1,8 @@
 <template>
-  <v-row class="h-full">
+  <v-row
+    class="h-full"
+    no-gutters
+  >
     <v-col
       class="d-flex justify-center"
       cols="12"

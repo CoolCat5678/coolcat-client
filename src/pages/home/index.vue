@@ -4,11 +4,11 @@
     fluid
   >
     <intro-canvas
-      class="fill-height pa-0"
+      class="fill-height"
       @animation-finished="handleAnimationDone"
     />
     <div
-      class="content-wrapper w-full h-full max-h-[100%] overflow-y-scroll"
+      class="content-wrapper w-full h-full max-h-[100%] overflow-y-scroll max-x-[100%] overflow-x-hidden"
       :class="{ visible: introDone }"
     >
       <grid-background />

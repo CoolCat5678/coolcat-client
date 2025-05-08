@@ -14,7 +14,7 @@ declare module 'vue' {
     BackgroundCanvas: typeof import('./components/BackgroundCanvas.vue')['default']
     copy: typeof import('./components/background/ElectricBackground copy.vue')['default']
     ElectricBackground: typeof import('./components/background/ElectricBackground.vue')['default']
-    GridBackground: typeof import('./components/background/GridBackground.vue')['default']
+    GridBackground: typeof import('./components/background/gridBackground.vue')['default']
     Intro: typeof import('./components/background/Intro.vue')['default']
     IntroCanvas: typeof import('./components/background/IntroCanvas.vue')['default']
     MyBtn: typeof import('./components/MyBtn.vue')['default']
