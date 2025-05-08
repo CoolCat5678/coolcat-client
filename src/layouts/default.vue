@@ -1,7 +1,7 @@
 <template>
   <AppHeader />
 
-  <v-main>
+  <v-main class="overflow-x-hidden">
     <router-view v-slot="{ Component }">
       <transition
         mode="out-in"
