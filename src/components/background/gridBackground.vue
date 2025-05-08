@@ -16,7 +16,7 @@
   } from 'vue'
 
   export default defineComponent({
-    name: 'ElectricCanvas',
+    name: 'GridBackground',
     setup () {
       const canvas = ref<HTMLCanvasElement | null>(null)
       let animationFrameId: number
