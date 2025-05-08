@@ -4,7 +4,6 @@
     class="w-full h-full"
   />
 </template>
-
 <script lang="ts">
   import {
     defineComponent,
@@ -17,7 +16,8 @@
 
   export default defineComponent({
     name: 'IntroCanvas',
-    setup () {
+    emits: ['animation-finished'],
+    setup (_, { emit }) {
       const canvas = ref<HTMLCanvasElement | null>(null)
       const theme = useTheme()
       const themeBackground = theme.current.value.colors.background
@@ -78,11 +78,11 @@
       }
 
       const animation_4 = () => {
-        backgroundAlpha = Math.max(0, backgroundAlpha - 0.01)
+        backgroundAlpha = Math.max(0, backgroundAlpha - 0.1)
       }
 
       const drawIntroPattern = (delta: number) => {
-        tickCounter += delta * 0.1
+        tickCounter += delta * 0.05
         if (tickCounter < 1) return
         tickCounter = 0
 
@@ -113,6 +113,7 @@
           if (backgroundAlpha === 0) {
             phase = 4
             cancelAnimationFrame(animationFrameId)
+            emit('animation-finished')
             clearSelf()
           }
         }
@@ -209,7 +210,6 @@
     },
   })
 </script>
-
 
 <style scoped>
   canvas {

@@ -1,6 +1,9 @@
 <template>
-  <div>
-    <v-container class="border-t">
+  <v-footer
+    app
+    height="40"
+  >
+    <v-container>
       <v-row dense>
         <v-col
           cols="12"
@@ -54,7 +57,7 @@
         </v-col>
       </v-row>
     </v-container>
-  </div>
+  </v-footer>
 </template>
 
 <script

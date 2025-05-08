@@ -1,18 +1,16 @@
 <template>
-  <v-container
-    class="fill-height d-flex position-relative"
-    fluid
-  >
-    <intro-canvas />
-    <grid-background />
-    <v-row>
-      <v-col
-        class="d-flex justify-center"
-        cols="12"
-      >
-        <h1 class="text-h1">Welcome to the Home Page</h1>
-      </v-col>
-    </v-row>
+  <v-container fluid>
+    <intro-canvas @animation-finished="handleAnimationDone" />
+    <div
+      class="content-wrapper fill-height"
+      :class="{ visible: introDone }"
+    >
+      <grid-background />
+      <FirstPage />
+      <SecondPage />
+      <ThirdPage />
+    </div>
+
   </v-container>
 </template>
 
@@ -20,7 +18,27 @@
   lang="ts"
   setup
 >
-
+  import { ref } from 'vue'
+  import FirstPage from './components/FirstPage.vue'
+  import SecondPage from './components/SecondPage.vue'
+  import ThirdPage from './components/ThirdPage.vue'
+  const introDone = ref(false)
+  const handleAnimationDone = () => {
+    introDone.value = true
+  }
 </script>
 
-<style scoped></style>
+<style scoped>
+  .content-wrapper {
+    opacity: 0;
+    transform: translateY(30px);
+    pointer-events: none;
+    transition: opacity 2.0s ease, transform 2.0s ease;
+  }
+
+  .content-wrapper.visible {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+</style>
