@@ -8,15 +8,15 @@
       @animation-finished="handleAnimationDone"
     />
     <div
-      class="content-wrapper w-full h-full max-h-[100%] overflow-y-scroll max-x-[100%] overflow-x-hidden"
+      class="w-full h-full max-h-[100%] overflow-y-scroll max-x-[100%] overflow-x-hidden pa-4"
       :class="{ visible: introDone }"
+      @click="handleWindowClick"
     >
       <grid-background />
-      <FirstPage />
-      <SecondPage />
-      <ThirdPage />
+      <transition name="fade">
+        <component :is="currentPage" />
+      </transition>
     </div>
-
   </v-container>
 </template>
 
@@ -24,27 +24,37 @@
   lang="ts"
   setup
 >
-  import { ref } from 'vue'
+  import { ref, markRaw } from 'vue'
   import FirstPage from './components/FirstPage.vue'
   import SecondPage from './components/SecondPage.vue'
-  import ThirdPage from './components/ThirdPage.vue'
+
   const introDone = ref(false)
+  const windowClicked = ref(false)
+
+  const currentPage = ref<ReturnType<typeof markRaw>>(null)
+
   const handleAnimationDone = () => {
     introDone.value = true
+    currentPage.value = markRaw(FirstPage)
+  }
+
+  const handleWindowClick = () => {
+    windowClicked.value = true
+    currentPage.value = markRaw(SecondPage)
   }
 </script>
 
 <style scoped>
-  .content-wrapper {
-    opacity: 0;
-    transform: translateY(30px);
-    pointer-events: none;
+
+  /* Fade transition styles */
+  .fade-enter-active,
+  .fade-leave-active {
     transition: opacity 2.0s ease, transform 2.0s ease;
   }
 
-  .content-wrapper.visible {
-    opacity: 1;
-    transform: translateY(0);
-    pointer-events: auto;
+  .fade-enter,
+  .fade-leave-to {
+    opacity: 0;
+    transform: translateY(30px);
   }
 </style>
