@@ -30,7 +30,7 @@
   }
 
   export default defineComponent({
-    name: 'ElectricCanvas',
+    name: 'ElectricBackground',
     setup () {
       const canvas = ref<HTMLCanvasElement | null>(null)
       let animationFrameId: number

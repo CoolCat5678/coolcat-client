@@ -16,7 +16,7 @@
   import { useTheme } from 'vuetify'
 
   export default defineComponent({
-    name: 'ElectricCanvas',
+    name: 'IntroCanvas',
     setup () {
       const canvas = ref<HTMLCanvasElement | null>(null)
       const theme = useTheme()
