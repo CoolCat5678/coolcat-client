@@ -44,12 +44,12 @@
             class="btn-fade"
             :class="{ visible: showButton }"
             color="primary"
-            router
-            :to="'/home'"
             variant="outlined"
+            @click="onStart"
           >
             Get Started
           </v-btn>
+
         </div>
       </v-col>
 
@@ -66,42 +66,40 @@
 </template>
 
 <script lang="ts">
-  import { defineComponent, onMounted, ref } from 'vue'
+  import { defineComponent, ref, onMounted } from 'vue'
+  import { useRouter } from 'vue-router'
 
   export default defineComponent({
     name: 'WelcomePage',
-    components: {
-    },
     setup () {
+      const router = useRouter()
+
       const showLogo = ref(false)
       const showTitle = ref(false)
       const showSubtitle = ref(false)
       const showButton = ref(false)
 
-      onMounted(() => {
-        setTimeout(() => {
-          showLogo.value = true
-        }, 100)
+      const wait = (ms: number) => new Promise(resolve => setTimeout(resolve, ms))
 
-        setTimeout(() => {
-          showTitle.value = true
-        }, 500)
+      const onStart = () => {
+        router.push('/home')
+      }
 
-        setTimeout(() => {
-          showSubtitle.value = true
-        }, 1100)
-
-        setTimeout(() => {
-          showButton.value = true
-        }, 1700)
+      onMounted(async () => {
+        await wait(100)
+        showTitle.value = true
+        await wait(600)
+        showSubtitle.value = true
+        await wait(600)
+        showButton.value = true
       })
-
 
       return {
         showLogo,
         showTitle,
         showSubtitle,
         showButton,
+        onStart,
       }
     },
   })
