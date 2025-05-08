@@ -1,8 +1,14 @@
 <template>
-  <v-container fluid>
-    <intro-canvas @animation-finished="handleAnimationDone" />
+  <v-container
+    class="fill-height pa-0"
+    fluid
+  >
+    <intro-canvas
+      class="fill-height pa-0"
+      @animation-finished="handleAnimationDone"
+    />
     <div
-      class="content-wrapper fill-height"
+      class="content-wrapper w-full h-full max-h-[100%] overflow-y-scroll"
       :class="{ visible: introDone }"
     >
       <grid-background />

@@ -35,7 +35,7 @@
       let backgroundAlpha = 1.0
 
       const animation3Stages = 4
-      const stageDelay = 5
+      const stageDelay = 3
       let columnGroupMap: number[] = []
 
       const clearSelf = () => {
@@ -44,6 +44,13 @@
           el.parentNode.removeChild(el)
         }
       }
+
+      const isGridCleared = (): boolean => {
+        return gridBrightness.every(row =>
+          row.every(val => val < 0.01)
+        )
+      }
+
 
       const animation_1 = () => {
         for (let row = 0; row < rows; row++) {
@@ -55,15 +62,6 @@
         }
       }
 
-      const animation_2 = () => {
-        for (let row = 0; row < rows; row++) {
-          for (let col = 0; col < cols; col++) {
-            if ((col - row) === (cols - 1 - tick)) {
-              gridBrightness[row][col] = 1
-            }
-          }
-        }
-      }
 
       const animation_3 = () => {
         for (let col = 0; col < cols; col++) {
@@ -90,34 +88,32 @@
           animation_1()
           tick++
           if (tick > rows + cols - 2) {
-            tick = 0
-            phase = 1
+            if (isGridCleared()) {
+              tick = 0
+              phase = 1
+            }
           }
         } else if (phase === 1) {
-          animation_2()
-          tick++
-          if (tick > rows + cols - 2) {
-            tick = 0
-            phase = 2
-          }
-        } else if (phase === 2) {
           animation_3()
           tick++
           const maxDelay = (animation3Stages - 1) * stageDelay
           if (tick > rows + maxDelay) {
-            tick = 0
-            phase = 3
+            if (isGridCleared()) {
+              tick = 0
+              phase = 2
+            }
           }
-        } else if (phase === 3) {
+        } else if (phase === 2) {
           animation_4()
           if (backgroundAlpha === 0) {
-            phase = 4
+            phase = 3
             cancelAnimationFrame(animationFrameId)
             emit('animation-finished')
             clearSelf()
           }
         }
       }
+
 
       const drawGrid = (
         ctx: CanvasRenderingContext2D,

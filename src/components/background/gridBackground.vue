@@ -1,7 +1,7 @@
 <template>
   <canvas
     ref="canvas"
-    class="w-full h-full"
+    class="w-full fill-height"
     @click="handleClick"
   />
 </template>
