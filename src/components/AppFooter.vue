@@ -1,7 +1,7 @@
 <template>
   <v-footer
     app
-    height="40"
+    height="80"
   >
     <v-container>
       <v-row dense>
