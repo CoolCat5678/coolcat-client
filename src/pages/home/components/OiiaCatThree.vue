@@ -69,11 +69,11 @@
       if (elapsedTime < animationDuration) {
         const progress = elapsedTime / animationDuration
         camera.position.lerpVectors(initialPosition, targetPosition, progress)
-        camera.lookAt(new THREE.Vector3(0, 2, 0))
+        camera.lookAt(new THREE.Vector3(0, 3, 0))
       } else {
         if (!animationFinished) {
           camera.position.copy(targetPosition)
-          camera.lookAt(new THREE.Vector3(0, 2, 0))
+          camera.lookAt(new THREE.Vector3(0, 3, 0))
           animationFinished = true
         }
       }
