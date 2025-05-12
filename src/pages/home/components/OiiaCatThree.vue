@@ -14,6 +14,7 @@
   import { GLTF, GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
 
   const modelUrl = new URL('../../../assets/models/oiiaioooooiai_cat/scene.gltf', import.meta.url).href
+  const textureUrl = new URL('../../../assets/models/oiiaioooooiai_cat/textures/Muchkin2_baseColor.png', import.meta.url).href
   const threeCanvas = ref<HTMLElement | null>(null)
 
   onMounted(() => {
