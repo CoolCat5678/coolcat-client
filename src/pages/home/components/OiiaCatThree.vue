@@ -14,6 +14,7 @@
   import { GLTF, GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
 
   const modelUrl = new URL('../../../assets/models/oiiaioooooiai_cat/scene.gltf', import.meta.url).href
+  const textureUrl = new URL('../../../assets/models/oiiaioooooiai_cat/textures/Muchkin2_baseColor.png', import.meta.url).href
   const threeCanvas = ref<HTMLElement | null>(null)
 
   onMounted(() => {
@@ -69,11 +70,11 @@
       if (elapsedTime < animationDuration) {
         const progress = elapsedTime / animationDuration
         camera.position.lerpVectors(initialPosition, targetPosition, progress)
-        camera.lookAt(new THREE.Vector3(0, 2, 0))
+        camera.lookAt(new THREE.Vector3(0, 3, 0))
       } else {
         if (!animationFinished) {
           camera.position.copy(targetPosition)
-          camera.lookAt(new THREE.Vector3(0, 2, 0))
+          camera.lookAt(new THREE.Vector3(0, 3, 0))
           animationFinished = true
         }
       }

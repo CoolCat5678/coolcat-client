@@ -12,7 +12,7 @@ declare module 'vue' {
     AppHeader: typeof import('./components/AppHeader.vue')['default']
     AuraButton: typeof import('./components/element/AuraButton.vue')['default']
     ElectricBackground: typeof import('./components/background/ElectricBackground.vue')['default']
-    GridBackground: typeof import('./components/background/gridBackground.vue')['default']
+    GridBackground: typeof import('./components/background/GridBackground.vue')['default']
     IntroCanvas: typeof import('./components/background/IntroCanvas.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
