@@ -100,4 +100,5 @@ export default defineConfig({
       },
     },
   },
+  assetsInclude: ['**/*.gltf'],
 })
