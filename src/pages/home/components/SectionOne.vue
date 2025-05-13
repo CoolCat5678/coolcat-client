@@ -7,27 +7,35 @@
       ref="sectionOneCardRef"
       class="section-one-card-wrapper"
     >
-      <v-card
+      <div
+        class="section-one-tv-card"
         elevation="6"
         variant="outlined"
-        class="section-one-tv-card"
       >
-        <!-- 你會放 gif 或 video 在這裡 -->
         <img
           alt="TV Wall"
-          class="w-full h-full object-cover"
+          class="w-full h-full object-cover rounded-4xl"
           src="@/assets/shocked-surprised.gif"
         >
-      </v-card>
+      </div>
     </div>
 
-    <div class="section-one-description">
-      <h2 class="text-3xl font-bold mb-4">是又怎樣</h2>
-      <p class="text-lg text-gray-600 max-w-xl mx-auto">
-        在這裡，創意與科技融合，點亮品牌的新篇章。
-        我們相信每一個影像都能講述一個有力的故事。
-      </p>
-    </div>
+    <v-card
+      class="mx-auto"
+      color="secondary"
+      variant="text"
+    >
+      <v-card-title class="text-h5 font-weight-bold text-primary-darken-4">
+        是又怎樣
+      </v-card-title>
+
+      <v-card-text class="text-body-1 text-primary-darken-2">
+        本人在此鄭重澄清：本人從未參與過任何拷打羊宮妃娜的言論，你要知道 BanG Dream 是一個養成系的企劃，主打的是記錄三次元的少女們與二次元的少女們為了心中的夢想而一同成長的感人經歷。<br><br>
+        如果覺得某個成員不夠努力那肯定是她還在成長當中，如果覺得某個成員記不住詞那肯定是提詞器沒到位。羊宮妃那深懂粉絲內心，與粉絲同為一心，是邦邦中的豪傑。<br><br>
+        她的轉變是一部非常值得推薦給所有人的勵志故事，整個世界是一個巨大的羊宮妃那，配音界都需要以羊宮妃那為榜樣，積極學習。<br><br>
+        最後祝羊宮妃那和她的樂隊 MyGO!!!!! 蒸蒸日上。
+      </v-card-text>
+    </v-card>
   </section>
 </template>
 
@@ -49,15 +57,15 @@
 
     gsap.fromTo(
       sectionOneCardRef.value,
-      { width: '80%' },
+      { width: '100%' },
       {
-        width: '100%',
+        width: '70%',
         scrollTrigger: {
           trigger: sectionOneRef.value,
-          start: 'top top',
-          end: '+=100%',
+          start: '0%',
+          end: '+=150%',
           scrub: true,
-          pin: true,
+          pin: false,
         },
         ease: 'none',
       }
@@ -72,24 +80,22 @@
     flex-direction: column;
     align-items: center;
     padding: 4rem 1rem;
-    gap: 4rem;
+    gap: 1rem;
   }
 
   .section-one-card-wrapper {
     width: 100%;
-    max-width: 1000px;
     display: flex;
     justify-content: center;
   }
 
   .section-one-tv-card {
     width: 100%;
-    height: 400px;
+    height: 600px;
     overflow: hidden;
   }
 
   .section-one-description {
     text-align: center;
-    padding: 0 1rem;
   }
 </style>

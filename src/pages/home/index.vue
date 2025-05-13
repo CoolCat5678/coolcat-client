@@ -15,8 +15,8 @@
         </p>
       </div>
     </v-container>
-    <SectionOne />
-    <SectionTwo />
+    <!-- <SectionOne />
+    <SectionTwo /> -->
     <SectionThree />
   </v-container>
 </template>

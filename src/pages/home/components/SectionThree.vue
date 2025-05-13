@@ -1,69 +1,111 @@
 <template>
-    <section
-        ref="sectionRef"
-        class="section-container"
-    >
+  <section
+    class="grow-story"
+    ref="storySection"
+  >
+    <div class="story-wrapper">
+      <div
+        class="textContentArticle"
+        ref="textWrapper"
+      >
         <div
-            ref="cardRef"
-            class="card-wrapper"
+          v-for="(text, index) in pages"
+          :key="index"
+          class="textArea"
         >
-            <v-card
-                elevation="6"
-                class="animated-card"
-            >
-                <h2 id="title">Simple Fade-Up Card</h2>
-                <p>This card fades and moves up into view on scroll.</p>
-            </v-card>
+          <p class="text">{{ text }}</p>
         </div>
-    </section>
+      </div>
+    </div>
+  </section>
 </template>
 
 <script
-    setup
-    lang="ts"
+  setup
+  lang="ts"
 >
-    import { ref, onMounted } from 'vue'
-    import gsap from 'gsap'
-    import ScrollTrigger from 'gsap/ScrollTrigger'
+  import { ref, onMounted, nextTick } from 'vue'
+  import gsap from 'gsap'
+  import ScrollTrigger from 'gsap/ScrollTrigger'
 
-    gsap.registerPlugin(ScrollTrigger)
+  gsap.registerPlugin(ScrollTrigger)
 
-    const sectionRef = ref<HTMLElement | null>(null)
-    const cardRef = ref<HTMLElement | null>(null)
+  const storySection = ref<HTMLElement | null>(null)
+  const textWrapper = ref<HTMLElement | null>(null)
 
-    onMounted(() => {
-        if (!sectionRef.value || !cardRef.value) return
+  const pages = [
+    '從一個小小的點子開始，這段旅程充滿了挑戰與成長。',
+    '我們走過未知的道路，跌倒過，也一次次重新站起。',
+    '每一段經歷都成就了今天的我們。',
+    '夥伴的努力與汗水，是這段旅程不可或缺的一頁。',
+    '這不是結尾，而是另一段新篇章的開始。',
+    '我們將繼續探索、挑戰、前行。',
+    '每一步，都是未來的根基。',
+    '每個夢想，都值得全力以赴。',
+    '我們的旅程，還在繼續。',
+    '這就是我們的故事。'
+  ]
 
-        gsap.from(cardRef.value, {
-            opacity: 0,
-            y: 50,
-            duration: 1,
-            ease: 'power2.out',
-            scrollTrigger: {
-                trigger: sectionRef.value,
-                start: 'top 80%',
-                toggleActions: 'play none none none',
-            }
-        })
+  onMounted(async () => {
+    await nextTick()
+
+    const totalPages = pages.length
+    const container = textWrapper.value
+    if (!container) return
+
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: storySection.value,
+        start: 'top top',
+        end: () => `+=${window.innerHeight * totalPages * 0.2}`,
+        scrub: true,
+        pin: true,
+        anticipatePin: 1
+      }
     })
+
+    tl.to(container, {
+      xPercent: -(100 * (totalPages - 1)),
+      ease: 'none'
+    })
+  })
 </script>
 
 <style scoped>
-    .section-container {
-        min-height: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding: 2rem;
-    }
+  .grow-story {
+    height: 100vh;
+    background-color: #f0f0f0;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 
-    .card-wrapper {
-        width: 100%;
-        max-width: 1000px;
-    }
+  .story-wrapper {
+    width: 100%;
+    overflow: hidden;
+    max-width: 800px;
+  }
 
-    .animated-card {
-        padding: 2rem;
-        background-color: #ffffff;
-    }
+  .textContentArticle {
+    display: flex;
+    width: max-content;
+  }
+
+  .textArea {
+    flex: 0 0 100%;
+    padding: 2rem;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .text {
+    font-size: 1.5rem;
+    text-align: center;
+    max-width: 600px;
+    color: #333;
+  }
 </style>
