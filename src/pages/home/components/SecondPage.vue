@@ -1,20 +1,17 @@
 <template>
-  <v-row class="h-full">
-    <v-col
-      class="d-flex justify-center"
-      cols="12"
-    >
-      <transition name="fade">
-        <h1
-          v-show="visible"
-          class="text-h1"
-        >
-          O I I A
-        </h1>
-      </transition>
-      <OiiaCatThree />
-    </v-col>
-  </v-row>
+  <v-container
+    class="fill-height pa-0"
+    fluid
+  >
+    <transition name="fade">
+      <h1
+        v-show="visible"
+        class="text-h1 text-center"
+      >
+        O I I A
+      </h1>
+    </transition>
+  </v-container>
 </template>
 
 <script
@@ -22,7 +19,6 @@
   setup
 >
   import { onMounted, ref } from 'vue'
-  import OiiaCatThree from './OiiaCatThree.vue'
 
   const visible = ref(false)
 

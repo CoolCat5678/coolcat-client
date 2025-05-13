@@ -1,22 +1,17 @@
 <template>
-  <v-row
-    class="h-full"
-    no-gutters
+  <v-container
+    class="fill-height pa-0"
+    fluid
   >
-    <v-col
-      class="d-flex items-center justify-center"
-      cols="12"
-    >
-      <transition name="fade">
-        <h2
-          v-show="visible"
-          class="text-h2"
-        >
-          Welcome to the First Page
-        </h2>
-      </transition>
-    </v-col>
-  </v-row>
+    <transition name="fade">
+      <h2
+        v-show="visible"
+        class="text-h2"
+      >
+        Welcome to the First Page
+      </h2>
+    </transition>
+  </v-container>
 </template>
 
 <script

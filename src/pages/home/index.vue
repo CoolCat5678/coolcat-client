@@ -13,9 +13,30 @@
       @click="handleWindowClick"
     >
       <grid-background />
-      <transition name="fade">
-        <component :is="currentPage" />
-      </transition>
+      <div
+        v-if="introDone"
+        class="flex w-full h-full"
+      >
+        <!-- Left Button container takes 10% width and centers button -->
+        <div class="w-[10%] flex justify-center items-center">
+          <v-btn @click="prevPage">Previous</v-btn>
+        </div>
+
+        <!-- Component container takes 80% width -->
+        <div class="w-[80%]">
+          <transition
+            mode="out-in"
+            name="fade"
+          >
+            <component :is="pages[currentPageIndex]" />
+          </transition>
+        </div>
+
+        <!-- Right Button container takes 10% width and centers button -->
+        <div class="w-[10%] flex justify-center items-center">
+          <v-btn @click="nextPage">Next</v-btn>
+        </div>
+      </div>
     </div>
   </v-container>
 </template>
@@ -29,18 +50,25 @@
   import SecondPage from './components/SecondPage.vue'
 
   const introDone = ref(false)
-  const windowClicked = ref(false)
+  const currentPageIndex = ref(0)
 
-  const currentPage = ref<ReturnType<typeof markRaw>>(null)
+  // Array to hold the page components
+  const pages = [markRaw(FirstPage), markRaw(SecondPage)]
 
   const handleAnimationDone = () => {
     introDone.value = true
-    currentPage.value = markRaw(FirstPage)
   }
 
-  const handleWindowClick = () => {
-    windowClicked.value = true
-    currentPage.value = markRaw(SecondPage)
+  const prevPage = () => {
+    if (currentPageIndex.value > 0) {
+      currentPageIndex.value--
+    }
+  }
+
+  const nextPage = () => {
+    if (currentPageIndex.value < pages.length - 1) {
+      currentPageIndex.value++
+    }
   }
 </script>
 
@@ -57,4 +85,5 @@
     opacity: 0;
     transform: translateY(30px);
   }
+
 </style>
