@@ -1,8 +1,5 @@
 <template>
-  <v-footer
-    app
-    height="80"
-  >
+  <v-footer class="max-h-[100px] h-[80px]">
     <v-container>
       <v-row dense>
         <v-col
