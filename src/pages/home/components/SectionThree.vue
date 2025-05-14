@@ -1,79 +1,61 @@
 <template>
-  <section
-    ref="sectionOneRef"
-    class="section-one-container"
-  >
-    <div class="section-one-content-wrapper">
-      <!-- 左圖 -->
-      <v-card
-        class="section-one-text-card"
-        color="secondary"
-        variant="text"
+  <section class="py-10">
+    <v-container>
+      <v-row
+        align="center"
+        justify="center"
       >
-        <v-card-title class="text-h5 font-weight-bold text-primary-darken-4">
-          火车结局
-        </v-card-title>
+        <v-col
+          cols="12"
+          md="6"
+        >
+          <v-card
+            elevation="2"
+            class="overflow-hidden rounded-xl h-96"
+          >
+            <img
+              src="@/assets/img/orangeend.jpeg"
+              alt="TV Wall"
+              class="w-full h-full object-cover"
+            />
+          </v-card>
+        </v-col>
 
-        <v-card-text class="text-body-1 text-secondary">
-          阳光洒下火车站台，doro将不多的积蓄用来买了心爱的欧润吉，不过 这次她并不打算白己吃。doro知道比起欧润吉，更心爱的 人即将远走高飞。 doro跌跌荡荡的走向你，并把心爱的欧润吉送给心爱的你。她想告诉 你，希望你带上欧润吉，吃了它们，吃了她所有的爱。这样她所与的爱，就能直留在 你身边。但你挥了挥手中的两张车票，一把抱起doro，走进了车厢，一起离开了这个地方。
-        </v-card-text>
-      </v-card>
-
-      <!-- 右文 -->
-      <div
-        class="section-one-tv-card"
-        elevation="6"
-        variant="outlined"
-      >
-        <img
-          alt="TV Wall"
-          class="w-full h-full object-cover rounded-4xl"
-          src="@/assets/yoshino-helloha.gif"
-        />
-      </div>
-    </div>
+        <v-col
+          cols="12"
+          md="6"
+        >
+          <v-card
+            color="secondary"
+            variant="text"
+            class="h-full"
+          >
+            <v-card-title class="text-h5 font-weight-bold text-primary-darken-4">
+              火车结局
+            </v-card-title>
+            <v-card-text class="text-body-1 text-secondary">
+              阳光洒下火车站台，doro将不多的积蓄用来买了心爱的欧润吉，不过这次她并不打算白己吃。
+              doro知道比起欧润吉，更心爱的人即将远走高飞。doro跌跌荡荡地走向你，并把心爱的欧润吉送给心爱的你。
+              她想告诉你，希望你带上欧润吉，吃了它们，吃了她所有的爱。这样她所予的爱，就能一直留在你身边。
+              但你挥了挥手中的两张车票，一把抱起 doro，走进了车厢，一起离开了这个地方。
+            </v-card-text>
+          </v-card>
+        </v-col>
+      </v-row>
+    </v-container>
   </section>
 </template>
 
-<script setup lang="ts">
-import { ref } from 'vue'
+<script
+  setup
+  lang="ts"
+>
+  // 無邏輯需求
 </script>
 
 <style scoped>
-.section-one-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 4rem 1rem;
-  gap: 1rem;
-}
-
-.section-one-content-wrapper {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-}
-
-.section-one-tv-card {
-  width: 45%;
-  height: 500px;
-  overflow: hidden;
-}
-
-.section-one-text-card {
-  width: 50%;
-  padding: 1rem;
-}
-
-.section-one-tv-card img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 1rem;
-}
-
-.text-body-1 {
-  color: #4e4e4e;
-}
+  .text-body-1 {
+    color: #4e4e4e;
+    line-height: 1.6;
+  }
 </style>
