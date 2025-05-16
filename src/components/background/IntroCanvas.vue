@@ -61,8 +61,15 @@
         backgroundAlpha = Math.max(0, backgroundAlpha - 0.4)
       }
 
+      const isGridCleared = (): boolean => {
+        const lastRow = gridBrightness[gridBrightness.length - 1];
+
+        return lastRow[lastRow.length - 1] < 0.1;
+      };
+
+
       const drawIntroPattern = (delta: number) => {
-        tickCounter += delta * 0.5
+        tickCounter += delta * 1.4
         if (tickCounter < 1) return
         tickCounter = 0
 
@@ -71,7 +78,7 @@
           tick++
 
           const waveDuration = cols * waveDelay + rows * 2
-          if (tick > waveDuration) {
+          if (tick > waveDuration && isGridCleared()) {
             tick = 0
             phase = 1
           }

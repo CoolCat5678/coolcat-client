@@ -48,7 +48,7 @@
   setup
   lang="ts"
 >
-  import { ref, onMounted } from 'vue'
+  import { onMounted, ref } from 'vue'
   import gsap from 'gsap'
   import ScrollTrigger from 'gsap/ScrollTrigger'
 
@@ -111,10 +111,12 @@
   }
 
   .tv-wall-grid {
+    min-width: 100vw;
     display: flex;
     height: 100%;
     gap: 1rem;
     overflow: hidden;
+    overflow-x: scroll;
 
     scrollbar-width: none;
     /* Firefox */
