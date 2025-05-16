@@ -69,7 +69,7 @@
 
 
       const drawIntroPattern = (delta: number) => {
-        tickCounter += delta * 0.5
+        tickCounter += delta * 1.4
         if (tickCounter < 1) return
         tickCounter = 0
 
