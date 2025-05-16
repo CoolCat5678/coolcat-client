@@ -31,7 +31,7 @@
           <img
             alt="TV Wall"
             class="tv-wall-img object-cover rounded-2xl"
-             src="@/assets/img/doroqq.jpg"
+            src="@/assets/img/doroqq.jpg"
           >
           <img
             alt="TV Wall"
@@ -74,15 +74,15 @@
         trigger: sectionTwoRef.value,
         start: 'top 100%',
         toggleActions: 'play none none reset',
-      
+
       },
     })
 
     tl.fromTo(images[0], { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.5, ease: 'power2.out' })
-    .fromTo(images[1], { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.5, ease: 'power2.out' }, '+=0.1')
-    .fromTo(images[2], { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.5, ease: 'power2.out' }, '+=0.1')
-    .fromTo(images[3], { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.5, ease: 'power2.out' }, '+=0.1')
-    .fromTo(images[4], { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.5, ease: 'power2.out' }, '+=0.1')
+      .fromTo(images[1], { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.5, ease: 'power2.out' }, '+=0.1')
+      .fromTo(images[2], { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.5, ease: 'power2.out' }, '+=0.1')
+      .fromTo(images[3], { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.5, ease: 'power2.out' }, '+=0.1')
+      .fromTo(images[4], { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.5, ease: 'power2.out' }, '+=0.1')
     // .fromTo(images[5], { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.5, ease: 'power2.out' }, '+=0.1')
     // .fromTo(images[6], { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.5, ease: 'power2.out' }, '+=0.1')
     // .fromTo(images[7], { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.5, ease: 'power2.out' }, '+=0.1')
@@ -111,17 +111,22 @@
   }
 
   .tv-wall-grid {
+    min-width: 100vw;
     display: flex;
     height: 100%;
     gap: 1rem;
-    overflow: auto;
+    overflow: hidden;
+    overflow-x: scroll;
 
-    scrollbar-width: none; /* Firefox */
-    -ms-overflow-style: none; /* Internet Explorer 10+ */
+    scrollbar-width: none;
+    /* Firefox */
+    -ms-overflow-style: none;
+    /* Internet Explorer 10+ */
   }
 
   .tv-wall-grid::-webkit-scrollbar {
-    display: none; /* Chrome, Safari, Opera */
+    display: none;
+    /* Chrome, Safari, Opera */
   }
 
   .tv-wall-img {

@@ -12,12 +12,19 @@
         elevation="6"
         variant="outlined"
       >
-        <img
-          ref="imgCardRef"
-          alt="TV Wall"
+        <video
+          ref="videoCardRef"
+          autoplay
           class="w-full h-full object-cover"
-          src="@/assets/shocked-surprised.gif"
+          loop
+          muted
         >
+          <source
+            src="@/assets/xlarge.mp4"
+            type="video/mp4"
+          >
+          Your browser does not support the video tag.
+        </video>
       </div>
     </div>
 
@@ -47,10 +54,10 @@
 
   const sectionOneRef = ref<HTMLElement | null>(null)
   const sectionOneCardRef = ref<HTMLElement | null>(null)
-  const imgCardRef = ref<HTMLElement | null>(null)
+  const videoCardRef = ref<HTMLElement | null>(null)
 
   onMounted(() => {
-    if (!sectionOneRef.value || !sectionOneCardRef.value || !imgCardRef.value) return
+    if (!sectionOneRef.value || !sectionOneCardRef.value || !videoCardRef.value) return
 
     gsap.fromTo(
       sectionOneCardRef.value,
@@ -69,7 +76,7 @@
     )
 
     gsap.fromTo(
-      imgCardRef.value,
+      videoCardRef.value,
       { borderRadius: '0' },
       {
         borderRadius: '4rem',

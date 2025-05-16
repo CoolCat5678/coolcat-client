@@ -1,19 +1,35 @@
 <template>
   <section class="py-10">
-    <v-container>
-      <v-row align="center" justify="center">
-        <v-col cols="12" md="6">
-          <v-card elevation="2" class="overflow-hidden rounded-xl h-96">
+    <v-container fluid>
+      <v-row
+        align="center"
+        justify="center"
+      >
+        <v-col
+          cols="12"
+          md="6"
+        >
+          <v-card
+            class="overflow-hidden rounded-xl h-96"
+            elevation="2"
+          >
             <img
-              src="@/assets/img/orangeend.jpeg"
               alt="TV Wall"
               class="w-full h-full object-cover"
-            />
+              src="@/assets/img/orangeend.jpeg"
+            >
           </v-card>
         </v-col>
 
-        <v-col cols="12" md="6">
-          <v-card color="secondary" variant="text" class="h-full">
+        <v-col
+          cols="12"
+          md="6"
+        >
+          <v-card
+            color="secondary"
+            variant="text"
+            class="h-full"
+          >
             <v-card-title class="text-h5 font-weight-bold text-primary-darken-4">
               火车结局
             </v-card-title>
@@ -30,13 +46,16 @@
   </section>
 </template>
 
-<script setup lang="ts">
-// 無邏輯需求
+<script
+  setup
+  lang="ts"
+>
+  // 無邏輯需求
 </script>
 
 <style scoped>
-.text-body-1 {
-  color: #4e4e4e;
-  line-height: 1.6;
-}
+  .text-body-1 {
+    color: #4e4e4e;
+    line-height: 1.6;
+  }
 </style>
