@@ -1,26 +1,29 @@
 <template>
   <section class="py-10">
-    <v-container>
+    <v-container fluid>
       <v-row
         align="center"
         justify="center"
       >
+        <!-- Image Card -->
         <v-col
           cols="12"
           md="6"
         >
           <v-card
-            elevation="2"
             class="overflow-hidden rounded-xl h-96"
+            elevation="2"
+            ref="cardImage"
           >
             <img
-              src="@/assets/img/orangeend.jpeg"
               alt="TV Wall"
               class="w-full h-full object-cover"
+              src="@/assets/img/orangeend.jpeg"
             />
           </v-card>
         </v-col>
 
+        <!-- Text Card -->
         <v-col
           cols="12"
           md="6"
@@ -29,6 +32,7 @@
             color="secondary"
             variant="text"
             class="h-full"
+            ref="cardText"
           >
             <v-card-title class="text-h5 font-weight-bold text-primary-darken-4">
               火车结局
@@ -50,7 +54,39 @@
   setup
   lang="ts"
 >
-  // 無邏輯需求
+  import { onMounted, ref } from 'vue';
+  import gsap from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  const cardImage = ref<HTMLElement | null>(null);
+  const cardText = ref<HTMLElement | null>(null);
+
+  onMounted(() => {
+    // 创建GSAP时间线
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: '.py-10',  // 触发动画的容器
+        start: 'top 100%',
+        toggleActions: 'play none none reset',  // 控制动画的触发方式
+      },
+    });
+
+    // 第一个卡片：图片
+    tl.fromTo(
+      cardImage.value,
+      { opacity: 0, y: 30 },
+      { opacity: 1, y: 0, duration: 0.5, ease: 'power2.out' }
+    )
+      // 第二个卡片：文字
+      .fromTo(
+        cardText.value,
+        { opacity: 0, y: 30 },
+        { opacity: 1, y: 0, duration: 0.5, ease: 'power2.out' },
+        '+=0.1'  // 延迟 0.1 秒开始
+      );
+  });
 </script>
 
 <style scoped>
