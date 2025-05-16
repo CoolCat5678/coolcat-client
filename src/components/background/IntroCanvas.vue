@@ -34,9 +34,7 @@
       let phase = 0
       let backgroundAlpha = 1.0
 
-      const animation3Stages = 4
-      const stageDelay = 3
-      let columnGroupMap: number[] = []
+      const waveDelay = 3
 
       const clearSelf = () => {
         const el = canvas.value
@@ -45,75 +43,48 @@
         }
       }
 
-      const isGridCleared = (): boolean => {
-        return gridBrightness.every(row =>
-          row.every(val => val < 0.01)
-        )
-      }
-
-
-      const animation_1 = () => {
-        for (let row = 0; row < rows; row++) {
-          for (let col = 0; col < cols; col++) {
-            if (row + col === tick) {
-              gridBrightness[row][col] = 1
-            }
-          }
-        }
-      }
-
-
-      const animation_3 = () => {
+      const waveAnimation = () => {
         for (let col = 0; col < cols; col++) {
-          const group = columnGroupMap[col]
-          const delay = group * stageDelay
-          const currentRow = rows - 1 - (tick - delay)
+          const localTick = tick - col * waveDelay
+          if (localTick < 0 || localTick > rows * 2) continue
 
-          if (tick >= delay && currentRow >= 0 && currentRow < rows) {
-            gridBrightness[currentRow][col] = 1
+          const up = localTick <= rows
+          const row = up ? rows - 1 - localTick : localTick - rows
+
+          if (row >= 0 && row < rows) {
+            gridBrightness[row][col] = 1
           }
         }
       }
 
-      const animation_4 = () => {
-        backgroundAlpha = Math.max(0, backgroundAlpha - 0.1)
+      const fadeOutBackground = () => {
+        backgroundAlpha = Math.max(0, backgroundAlpha - 0.4)
       }
 
       const drawIntroPattern = (delta: number) => {
-        tickCounter += delta * 0.05
+        tickCounter += delta * 0.5
         if (tickCounter < 1) return
         tickCounter = 0
 
         if (phase === 0) {
-          animation_1()
+          waveAnimation()
           tick++
-          if (tick > rows + cols - 2) {
-            if (isGridCleared()) {
-              tick = 0
-              phase = 1
-            }
+
+          const waveDuration = cols * waveDelay + rows * 2
+          if (tick > waveDuration) {
+            tick = 0
+            phase = 1
           }
         } else if (phase === 1) {
-          animation_3()
-          tick++
-          const maxDelay = (animation3Stages - 1) * stageDelay
-          if (tick > rows + maxDelay) {
-            if (isGridCleared()) {
-              tick = 0
-              phase = 2
-            }
-          }
-        } else if (phase === 2) {
-          animation_4()
+          fadeOutBackground()
           if (backgroundAlpha === 0) {
-            phase = 3
+            phase = 2
             cancelAnimationFrame(animationFrameId)
             emit('animation-finished')
             clearSelf()
           }
         }
       }
-
 
       const drawGrid = (
         ctx: CanvasRenderingContext2D,
@@ -129,12 +100,6 @@
         gridBrightness = Array.from({ length: rows }, (_, row) =>
           Array.from({ length: cols }, (_, col) => gridBrightness?.[row]?.[col] ?? 0)
         )
-
-        if (columnGroupMap.length !== cols) {
-          columnGroupMap = Array.from({ length: cols }, () =>
-            Math.floor(Math.random() * animation3Stages)
-          )
-        }
 
         drawIntroPattern(delta)
 

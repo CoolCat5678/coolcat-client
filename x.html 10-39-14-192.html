@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+    <meta charset="UTF-8">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+    <title>WebSocket 連接測試</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+            background-color: #f7f7f7;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        #status {
+            margin-top: 20px;
+            font-size: 20px;
+            color: #333;
+        }
+
+        #output {
+            margin-top: 20px;
+            border: 1px solid #ccc;
+            padding: 10px;
+            width: 80%;
+            height: 200px;
+            overflow-y: scroll;
+            margin: 0 auto;
+            background-color: #fff;
+            font-family: Consolas, monospace;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>WebSocket 連接測試</h1>
+
+    <button id="connectBtn">點擊連接 WebSocket</button>
+
+    <div id="status">狀態: 尚未連接</div>
+
+    <div id="output"></div>
+
+    <script>
+        // 取得頁面元素
+        const connectBtn = document.getElementById('connectBtn');
+        const statusDiv = document.getElementById('status');
+        const outputDiv = document.getElementById('output');
+
+        let ws;
+
+        // 連接 WebSocket
+        function connectWebSocket() {
+            // 這裡填入你的 WebSocket 伺服器 URL
+            const wsUrl = 'ws://ctwebsocket.acubedt.com';
+            ws = new WebSocket(wsUrl);
+
+            // 連接成功時
+            ws.onopen = () => {
+                statusDiv.textContent = `狀態: 已成功連接到 ${wsUrl}`;
+                appendOutput('WebSocket 連接成功');
+            };
+
+            // 收到消息時
+            ws.onmessage = (event) => {
+                appendOutput(`收到伺服器回傳: ${event.data}`);
+            };
+
+            // 連接關閉時
+            ws.onclose = () => {
+                statusDiv.textContent = '狀態: 連接已關閉';
+                appendOutput('WebSocket 連接已關閉');
+            };
+
+            // 發生錯誤時
+            ws.onerror = (error) => {
+                statusDiv.textContent = '狀態: 連接錯誤';
+                appendOutput(`WebSocket 錯誤: ${error}`);
+            };
+        }
+
+        // 在顯示區域顯示消息
+        function appendOutput(message) {
+            const messageElement = document.createElement('p');
+            messageElement.textContent = message;
+            outputDiv.appendChild(messageElement);
+
+            // 滾動到底部顯示最新的消息
+            outputDiv.scrollTop = outputDiv.scrollHeight;
+        }
+
+        // 綁定按鈕點擊事件
+        connectBtn.addEventListener('click', () => {
+            connectWebSocket();
+        });
+    </script>
+
+</body>
+
+</html>
