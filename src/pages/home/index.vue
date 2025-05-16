@@ -9,17 +9,17 @@
     />
 
     <!-- 首頁 Hero 區塊 -->
-    <transition name="slide-fade-up">
-      <div v-if="introDone">
-        <GridBackground />
-        <HomePage />
-        <SectionOne />
-        <SectionTwo />
-        <SectionThree />
-        <SectionFour />
-        <SectionFive />
-      </div>
-    </transition>
+    <div
+      v-if="introDone"
+      class="overflow-x-hidden"
+    >
+      <HomePage />
+      <SectionOne />
+      <SectionTwo />
+      <SectionThree />
+      <SectionFour />
+      <SectionFive />
+    </div>
   </v-container>
 </template>
 
@@ -41,18 +41,4 @@
   }
 </script>
 
-<style scoped>
-  .slide-fade-up-enter-active {
-    transition: all 1.2s ease;
-  }
-
-  .slide-fade-up-enter-from {
-    opacity: 0;
-    transform: translateY(40px);
-  }
-
-  .slide-fade-up-enter-to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-</style>
+<style scoped></style>
