@@ -13,12 +13,12 @@
       v-if="introDone"
       class="overflow-x-hidden"
     >
-      <HomePage />
-      <SectionOne />
-      <SectionTwo />
-      <SectionThree />
+      <!-- <HomePage /> -->
+      <!-- <SectionOne /> -->
+      <!-- <SectionTwo /> -->
+      <!-- <SectionThree /> -->
       <SectionFour />
-      <SectionFive />
+      <!-- <SectionFive /> -->
     </div>
   </v-container>
 </template>
