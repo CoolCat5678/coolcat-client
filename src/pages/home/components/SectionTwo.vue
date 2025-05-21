@@ -126,6 +126,7 @@
 
   .tv-wall-grid::-webkit-scrollbar {
     display: none;
+    padding: 20px;
     /* Chrome, Safari, Opera */
   }
 

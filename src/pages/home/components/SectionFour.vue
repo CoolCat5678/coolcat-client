@@ -15,9 +15,9 @@
         class="tv-wall-wrapper"
       >
         <img
-          :src="imgSrc"
           alt="TV Wall"
           class="tv-wall-img"
+          :src="imgSrc"
         >
       </div>
     </Vue3Marquee>

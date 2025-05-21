@@ -63,7 +63,6 @@
   onMounted(() => {
     if (!sectionOneRef.value || !sectionOneCardRef.value || !videoCardRef.value || !textRef.value) return
 
-    // 卡片縮放動畫
     gsap.fromTo(
       sectionOneCardRef.value,
       { width: '100%' },
@@ -79,7 +78,6 @@
       }
     )
 
-    // 圓角動畫
     gsap.fromTo(
       videoCardRef.value,
       { borderRadius: '0' },
@@ -103,7 +101,7 @@
         opacity: 1,
         scrollTrigger: {
           trigger: sectionOneRef.value,
-          start: 'top top',
+          start: '10% 10%',
           end: '+=1000',
           scrub: true,
           pin: true,
@@ -120,7 +118,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 4rem 1rem;
+    padding: 4rem 0;
     gap: 1rem;
   }
 
