@@ -15,6 +15,7 @@
           class="w-full h-full object-cover"
           loop
           muted
+          playsinline
         >
           <source
             src="@/assets/xlarge.mp4"
