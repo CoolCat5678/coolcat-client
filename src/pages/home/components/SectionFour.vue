@@ -3,12 +3,7 @@
     ref="sectionTwoRef"
     class="section-four-container"
   >
-    <Vue3Marquee
-      :duration="21"
-      :gradient="true"
-      :gradient-color="theme.global.current.value.dark ? [0, 0, 0] : [250, 250, 250]"
-      gradient-length="30%"
-    >
+    <Vue3Marquee>
       <div
         v-for="(imgSrc, index) in tvWallImages"
         :key="index"
@@ -34,10 +29,6 @@
   import A3 from '@/assets/img/doro2.webp'
   import A4 from '@/assets/img/doroqq.jpg'
   import A5 from '@/assets/img/QQ.jpg'
-  import { useTheme } from 'vuetify'
-
-  const theme = useTheme()
-
 
   const tvWallImages = [A1, A2, A3, A4, A5]
 </script>
