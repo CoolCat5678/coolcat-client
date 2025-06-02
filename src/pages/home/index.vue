@@ -1,35 +1,44 @@
 <template>
-  <v-container class="fill-height">
-    <v-row>
-      <v-col cols="12">
-        <v-img
-          class="mb-4"
-          height="150"
-          src="@/assets/coolcat.png"
-        />
-        <div class="mb-8 text-center">
-          <div class="text-h5 font-weight-bold">CoolCat</div>
-        </div>
-      </v-col>
+  <v-container
+    class="pa-0"
+    fluid
+  >
+    <intro-canvas
+      class="fill-height"
+      @animation-finished="handleAnimationDone"
+    />
 
-      <v-col
-        v-for="n in 20"
-        :key="n"
-        cols="12"
-        md="6"
-      >
-        <v-card
-          class="py-4"
-          color="primary"
-          prepend-icon="mdi-account"
-          rounded="lg"
-          subtitle="Navigate to the user list page."
-          :title="'Go to User'"
-          :to="'/users'"
-          variant="tonal"
-        />
-      </v-col>
-
-    </v-row>
+    <!-- 首頁 Hero 區塊 -->
+    <div
+      v-if="introDone"
+      class="overflow-x-hidden"
+    >
+      <HomePage />
+      <SectionOne />
+      <SectionTwo />
+      <SectionThree />
+      <SectionFour />
+      <SectionFive />
+    </div>
   </v-container>
 </template>
+
+<script
+  setup
+  lang="ts"
+>
+  import HomePage from './components/HomePage.vue';
+  import SectionOne from './components/SectionOne.vue';
+  import SectionTwo from './components/SectionTwo.vue';
+  import SectionThree from './components/SectionThree.vue';
+  import SectionFour from './components/SectionFour.vue';
+  import SectionFive from './components/SectionFive.vue';
+
+  const introDone = ref(false)
+
+  const handleAnimationDone = () => {
+    introDone.value = true
+  }
+</script>
+
+<style scoped></style>
