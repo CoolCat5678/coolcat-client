@@ -4,14 +4,14 @@
     <div class="w-full px-4 sm:px-6 lg:px-8">
       <!-- 同步進場 -->
       <h1
-        class="text-4xl sm:text-5xl md:text-6xl font-bold mb-8 fade-up"
+        class="text-4xl sm:text-5xl md:text-6xl font-bold mb-8 fade-in"
         style="animation-delay: 0s;"
       >
         {{ title }}
       </h1>
 
       <p
-        class="text-xl md:text-2xl max-w-3xl mx-auto mb-10 leading-loose fade-up"
+        class="text-xl md:text-2xl max-w-3xl mx-auto mb-10 leading-loose fade-in"
         style="animation-delay: 0s;"
       >
         你这个情况我还真见过，这样吧，你启动steam，搜索千恋万花，点击购买，启动游戏，记住七个选项：
@@ -28,7 +28,7 @@
         <v-card
           v-for="(step, index) in steps"
           :key="index"
-          class="fade-up pa-1 ma-2"
+          class="fade-in pa-1 ma-2"
           :style="{ animationDelay: `${index * 0.2 + delayOffset}s` }"
           :variant="'outlined'"
         >
@@ -40,7 +40,7 @@
 
       <!-- 最後一句 -->
       <p
-        class="text-xl md:text-2xl max-w-3xl mx-auto mt-10 fade-up"
+        class="text-xl md:text-2xl max-w-3xl mx-auto mt-10 fade-in"
         style="animation-delay: 2s;"
       >
         这样你就能进入丛雨线了。
@@ -70,16 +70,15 @@
 </script>
 
 <style scoped>
-  .fade-up {
+  .fade-in {
     opacity: 0;
-    transform: translateY(20px);
-    animation: fadeInUp 0.6s ease-out forwards;
+    animation: fadeIn 1.2s ease-out forwards;
   }
 
-  @keyframes fadeInUp {
+  @keyframes fadeIn {
     to {
       opacity: 1;
-      transform: translateY(0);
     }
   }
+
 </style>
