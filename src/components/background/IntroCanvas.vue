@@ -34,7 +34,7 @@
       let phase = 0
       let backgroundAlpha = 1.0
 
-      const waveDelay = 3
+      const waveDelay = 2
 
       const clearSelf = () => {
         const el = canvas.value
