@@ -33,35 +33,6 @@
   const tvWallImages = [A1, A2, A3, A4, A5]
 </script>
 
-
-<style scoped>
-  .section-four-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 2rem;
-  }
-
-  .tv-wall-wrapper {
-    width: auto;
-    height: 40vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 2rem;
-  }
-
-  .tv-wall-img {
-    max-height: 100%;
-    max-width: 100%;
-    height: auto;
-    width: auto;
-    object-fit: contain;
-    border-radius: 2rem;
-  }
-</style>
-
-
 <style scoped>
   .section-four-container {
     display: flex;

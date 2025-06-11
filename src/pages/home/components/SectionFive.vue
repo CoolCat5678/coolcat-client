@@ -110,7 +110,7 @@
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: title,
-          start: 'top 85%',
+          start: 'top 100%',
           toggleActions: 'play none none reset',
         },
       });

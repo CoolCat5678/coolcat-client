@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1"
+    />
+    <title>整張 PNG 透明洞遮罩</title>
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            width: 100%;
+            /* background: pink; 改成下面背景圖 */
+            background-image: url('mac.jpeg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .overlay {
+            position: fixed;
+            inset: 0;
+            background: black;
+
+            mask-image: linear-gradient(black, black), url('747.png');
+            mask-repeat: no-repeat, no-repeat;
+            mask-position: center, center;
+            mask-composite: exclude;
+
+            transform-origin: center center;
+            transition: transform 0.1s ease-out;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="overlay"></div>
+
+    <script>
+        const overlay = document.querySelector('.overlay');
+
+        window.addEventListener('mousemove', (e) => {
+            const x = e.clientX;
+            const width = window.innerWidth;
+
+            // 將 x 換算成百分比 0~1
+            const p = x / width;
+
+            let scale;
+
+            if (p <= 0.2) {
+                scale = 5;
+            } else if (p >= 0.8) {
+                scale = 1;
+            } else {
+                // 0.2 ~ 0.8 線性插值從 5 變 1
+                const t = (p - 0.2) / (0.8 - 0.2); // 0 ~ 1
+                scale = 5 - 4 * t; // 5 -> 1
+            }
+
+            overlay.style.transform = `scale(${scale})`;
+        });
+    </script>
+</body>
+
+</html>
