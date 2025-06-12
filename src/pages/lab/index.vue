@@ -1,9 +1,10 @@
 <template>
   <v-container
-    class="bg-container pa-0"
+    class="pa-0"
     fluid
   >
     <div class="overlay"></div>
+    <div class="bg-container"></div>
   </v-container>
 </template>
 
@@ -57,7 +58,7 @@
   }
 
   .overlay {
-    position: absolute;
+    z-index: 1;
     inset: 0;
     background: black;
 
