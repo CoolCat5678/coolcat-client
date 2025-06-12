@@ -25,16 +25,16 @@
 
   onMounted(() => {
     if (!sectionFourRef.value || !overlayRef.value) return
-
+    gsap.set(overlayRef.value, { scale: 5 })
     gsap.fromTo(
       overlayRef.value,
-      { scale: 6 },
+      { scale: 5 },
       {
         scale: 1,
         scrollTrigger: {
           trigger: sectionFourRef.value,
           start: 'top top',
-          end: '+=1000',
+          end: '+=3000',
           scrub: true,
           pin: true,
         },
