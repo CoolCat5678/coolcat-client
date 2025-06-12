@@ -25,12 +25,18 @@
 
   onMounted(() => {
     if (!sectionFourRef.value || !overlayRef.value) return
-    gsap.set(overlayRef.value, { scale: 5 })
+
+    const isMobile = window.innerWidth < 960
+    const startScale = 5
+    const endScale = isMobile ? 0.5 : 1
+
+    gsap.set(overlayRef.value, { scale: startScale })
+
     gsap.fromTo(
       overlayRef.value,
-      { scale: 5 },
+      { scale: startScale },
       {
-        scale: 1,
+        scale: endScale,
         scrollTrigger: {
           trigger: sectionFourRef.value,
           start: 'top top',
