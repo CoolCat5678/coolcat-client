@@ -1,21 +1,12 @@
 <template>
   <section
-    ref="sectionTwoRef"
-    class="section-four-container"
+    ref="sectionFourRef"
+    class="pa-0 bg-container"
   >
-    <Vue3Marquee>
-      <div
-        v-for="(imgSrc, index) in tvWallImages"
-        :key="index"
-        class="tv-wall-wrapper"
-      >
-        <img
-          alt="TV Wall"
-          class="tv-wall-img"
-          :src="imgSrc"
-        >
-      </div>
-    </Vue3Marquee>
+    <div
+      ref="overlayRef"
+      class="overlay"
+    />
   </section>
 </template>
 
@@ -23,40 +14,57 @@
   setup
   lang="ts"
 >
-  import { Vue3Marquee } from 'vue3-marquee'
-  import A1 from '@/assets/img/cinderella.jpg'
-  import A2 from '@/assets/img/doro.webp'
-  import A3 from '@/assets/img/doro2.webp'
-  import A4 from '@/assets/img/doroqq.jpg'
-  import A5 from '@/assets/img/QQ.jpg'
+  import { onMounted, ref } from 'vue'
+  import gsap from 'gsap'
+  import ScrollTrigger from 'gsap/ScrollTrigger'
 
-  const tvWallImages = [A1, A2, A3, A4, A5]
+  gsap.registerPlugin(ScrollTrigger)
+
+  const sectionFourRef = ref<HTMLElement | null>(null)
+  const overlayRef = ref<HTMLElement | null>(null)
+
+  onMounted(() => {
+    if (!sectionFourRef.value || !overlayRef.value) return
+
+    gsap.fromTo(
+      overlayRef.value,
+      { scale: 6 },
+      {
+        scale: 1,
+        scrollTrigger: {
+          trigger: sectionFourRef.value,
+          start: 'top top',
+          end: '+=1000',
+          scrub: true,
+          pin: true,
+        },
+        ease: 'none',
+      }
+    )
+  })
 </script>
 
+
 <style scoped>
-  .section-four-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 2rem;
+  .bg-container {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    background-image: url('@/assets/img/mac.jpeg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    overflow: hidden;
   }
 
-  .tv-wall-wrapper {
-    width: auto;
-    height: 40vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 2rem;
-  }
+  .overlay {
+    position: absolute;
+    inset: 0;
+    background: black;
 
-  .tv-wall-img {
-    max-height: 100%;
-    max-width: 100%;
-    height: auto;
-    width: auto;
-    object-fit: contain;
-    border-radius: 2rem;
+    mask-image: linear-gradient(black, black), url('@/assets/img/747.png');
+    mask-repeat: no-repeat, no-repeat;
+    mask-position: center, center;
+    mask-composite: exclude;
   }
-
 </style>
