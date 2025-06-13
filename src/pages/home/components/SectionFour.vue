@@ -26,9 +26,8 @@
   onMounted(() => {
     if (!sectionFourRef.value || !overlayRef.value) return
 
-    const isMobile = window.innerWidth < 960
-    const startScale = 5
-    const endScale = isMobile ? 0.5 : 1
+    const startScale = 10
+    const endScale = 1
 
     gsap.set(overlayRef.value, { scale: startScale })
 
@@ -44,7 +43,7 @@
           scrub: true,
           pin: true,
         },
-        ease: 'none',
+        ease: 'power2.out',
       }
     )
   })
@@ -71,6 +70,8 @@
     mask-image: linear-gradient(black, black), url('@/assets/img/747.png');
     mask-repeat: no-repeat, no-repeat;
     mask-position: center, center;
+    mask-size: 100% 100%, auto 50%;
+    /* 第一層全覆蓋，第二層佔 50% */
     mask-composite: exclude;
   }
 </style>
